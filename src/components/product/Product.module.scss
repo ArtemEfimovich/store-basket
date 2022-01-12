@@ -1,0 +1,45 @@
+
+.wrapper{
+  background: #fff;
+  width: 215px;
+  border: 1px solid #e8e8e8;
+  height: 380px;
+  border-radius: 8px;
+  margin: 15px;
+
+  .image{
+    width: 100%;
+  }
+  .price{
+    position: relative;
+    left:70%;
+    bottom: 10px;
+  }
+  .title{
+    font-size: 14px;
+    position: relative;
+    left:15%;
+    z-index: 2;
+    height: 72px;
+    width: 100%;
+    color: #484f59;
+    clear: both;
+    overflow: hidden;
+    display: block;
+    padding-top: 15px;
+  }
+
+  .buttonWrapper{
+    .button{
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 5px;
+      background: #f4511e;
+      cursor: pointer;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.2;
+    }
+  }
+
+}

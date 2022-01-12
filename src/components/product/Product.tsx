@@ -1,9 +1,28 @@
 import React from 'react';
+import s from './Product.module.scss'
 
-const Product = () => {
+
+type ProductPropsType ={
+    title: string
+    image:string
+    price: number
+}
+
+
+
+const Product = ({title,image,price}:ProductPropsType) => {
     return (
-        <div>
-            
+        <div className={s.wrapper}>
+            <img className={s.image} src={image} alt=""/>
+            <div className={s.title}>{title}</div>
+            <div className={s.price}>
+                {price}
+            </div>
+            <div className={s.buttonWrapper}>
+                <div className={s.button}>
+                    Buy
+                </div>
+            </div>
         </div>
     );
 };
