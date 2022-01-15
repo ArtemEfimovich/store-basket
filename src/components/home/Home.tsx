@@ -11,7 +11,6 @@ import {ProductsType} from "../../bll/reducers/basketReducer";
 const Home = () => {
     const products = useSelector<AppRootStateType,ProductsType[]>(state => state.basket.products)
 
-
     return (
         <div className={s.container}>
             <div className={s.wrapper}>

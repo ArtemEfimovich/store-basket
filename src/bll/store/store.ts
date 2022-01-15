@@ -10,7 +10,7 @@ export const store = configureStore({
     reducer: {
         firebaseReducer,
         firestoreReducer,
-        basketReducer,
+        basket:basketReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: {

@@ -55,7 +55,7 @@ const initialState: initialStateType = {
         },
 
     ],
-    coastItem: null
+    coastItem: 0
 }
 
 

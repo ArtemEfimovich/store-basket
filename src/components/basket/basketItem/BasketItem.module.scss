@@ -1,0 +1,22 @@
+.container{
+  width: 400px;
+  height: 120px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin-bottom: 10px;
+
+  .image{
+    width: 100px;
+    height: 100px;
+  }
+
+  .buttonWrapper{
+    display: flex;
+    align-items: center;
+
+  }
+
+}
