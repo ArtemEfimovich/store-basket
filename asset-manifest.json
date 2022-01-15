@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/store-basket/static/css/main.a175dd70.css",
+    "main.js": "/store-basket/static/js/main.0f64f178.js",
+    "index.html": "/store-basket/index.html",
+    "main.a175dd70.css.map": "/store-basket/static/css/main.a175dd70.css.map",
+    "main.0f64f178.js.map": "/store-basket/static/js/main.0f64f178.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a175dd70.css",
+    "static/js/main.0f64f178.js"
+  ]
+}
