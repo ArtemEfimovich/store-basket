@@ -8,10 +8,13 @@ import Badge from '@mui/material/Badge';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import {useNavigate} from "react-router-dom";
 import {PATH} from "../../routes/RouteComponent";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../bll/store/store";
 
 
 export default function Header() {
     let navigate = useNavigate()
+    let basketCount = useSelector<AppRootStateType,number|null>(state => state.basket.coastItem)
 
     const onBasketNavigateClick =()=>{
         navigate(PATH.BASKET)
@@ -36,7 +39,7 @@ export default function Header() {
                     <Box sx={{flexGrow: 1}}/>
                     <Box sx={{display: {xs: 'none', md: 'flex'}}}>
                         <IconButton onClick={onBasketNavigateClick} size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error">
+                            <Badge badgeContent={basketCount} color="error">
                                 <DeleteOutlinedIcon />
                             </Badge>
                         </IconButton>

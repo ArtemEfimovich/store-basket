@@ -6,11 +6,12 @@ type ProductPropsType ={
     title: string
     image:string
     price: number
+    buyClick:()=>void
 }
 
 
 
-const Product = ({title,image,price}:ProductPropsType) => {
+const Product = ({title,image,price,buyClick}:ProductPropsType) => {
     return (
         <div className={s.wrapper}>
             <img className={s.image} src={image} alt=""/>
@@ -19,7 +20,7 @@ const Product = ({title,image,price}:ProductPropsType) => {
                 {price}
             </div>
             <div className={s.buttonWrapper}>
-                <div className={s.button}>
+                <div onClick={buyClick} className={s.button}>
                     Buy
                 </div>
             </div>

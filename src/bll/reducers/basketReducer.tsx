@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, Dispatch, PayloadAction} from "@reduxjs/toolkit";
 import {uid} from "uid";
 
 
@@ -62,8 +62,18 @@ const initialState: initialStateType = {
 export const slice = createSlice({
     name: 'basket',
     initialState,
-    reducers: {}
+    reducers: {
+        addBasketCount(state, action: PayloadAction<{coastItem:number}>){
+            state.coastItem = action.payload.coastItem + 1
+        }
+
+    }
 })
 
 export const basketReducer = slice.reducer
-export const {} = slice.actions
+export const {addBasketCount} = slice.actions
+
+
+export const buyItemTC = (coastItem:number,) =>(dispatch:Dispatch<any>)=>{
+    dispatch(addBasketCount({coastItem}))
+}
