@@ -3,19 +3,11 @@ import Product from '../product/Product';
 import s from './Home.module.scss'
 import {AppRootStateType} from "../../bll/store/store";
 import {useDispatch, useSelector} from "react-redux";
-import {buyItemTC, ProductsType} from "../../bll/reducers/basketReducer";
-
-
+import {addBasketItem, ProductsType} from "../../bll/reducers/basketReducer";
 
 
 const Home = () => {
     const products = useSelector<AppRootStateType,ProductsType[]>(state => state.basket.products)
-    const dispatch = useDispatch()
-
-    const onBuyClick = () =>{
-        dispatch(buyItemTC(0))
-    }
-
 
 
     return (
@@ -26,7 +18,7 @@ const Home = () => {
                                      image={image}
                                      title={title}
                                      price={price}
-                                     buyClick={onBuyClick}
+                                     id={id}
                     />
                 })}
             </div>

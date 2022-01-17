@@ -8,39 +8,45 @@ import Badge from '@mui/material/Badge';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import {useNavigate} from "react-router-dom";
 import {PATH} from "../../routes/RouteComponent";
-import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../bll/store/store";
+import {useSelector} from "react-redux";
+import {ProductsType} from "../../bll/reducers/basketReducer";
+import {calsTotalCount} from "../../utils/utils";
 
 
 export default function Header() {
     let navigate = useNavigate()
-    let basketCount = useSelector<AppRootStateType,number|null>(state => state.basket.coastItem)
+    const basketItem = useSelector<AppRootStateType, ProductsType[]>(state => state.basket.productInBasket)
+    const coastItem = basketItem.length
+    const totalPrice = calsTotalCount(basketItem)
 
-    const onBasketNavigateClick =()=>{
+    const onBasketNavigateClick = () => {
         navigate(PATH.BASKET)
     }
-    const onHomeNavigateClick =()=>{
+    const onHomeNavigateClick = () => {
         navigate(PATH.HOME)
     }
 
     return (
-        <Box sx={{flexGrow: 1,width:'100%'}}>
+        <Box sx={{flexGrow: 1, width: '100%'}}>
             <AppBar position="static">
                 <Toolbar>
                     <Typography
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{display: {xs: 'none', sm: 'block'},cursor:'pointer'}}
+                        sx={{display: {xs: 'none', sm: 'block'}, cursor: 'pointer'}}
                         onClick={onHomeNavigateClick}
                     >
                         Store
                     </Typography>
                     <Box sx={{flexGrow: 1}}/>
+                    <div>{totalPrice ? totalPrice : null}</div>
                     <Box sx={{display: {xs: 'none', md: 'flex'}}}>
-                        <IconButton onClick={onBasketNavigateClick} size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={basketCount} color="error">
-                                <DeleteOutlinedIcon />
+                        <IconButton onClick={onBasketNavigateClick} size="large" aria-label="show 4 new mails"
+                                    color="inherit">
+                            <Badge badgeContent={coastItem} color="error">
+                                <DeleteOutlinedIcon/>
                             </Badge>
                         </IconButton>
                     </Box>

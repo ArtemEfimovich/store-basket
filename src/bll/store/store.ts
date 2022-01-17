@@ -10,11 +10,11 @@ export const store = configureStore({
         firestoreReducer,
         basket: basketReducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+   /* middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: {
             ignoredActions: [actionTypes.LOGIN, actionTypes.AUTH_LINK_ERROR]
         }
-    }),
+    }),*/
 })
 
 export type AppRootStateType = ReturnType<typeof store.getState>

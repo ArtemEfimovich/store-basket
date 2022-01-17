@@ -1,17 +1,27 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
 import s from './Product.module.scss'
+import {addBasketItem} from "../../bll/reducers/basketReducer";
 
 
-type ProductPropsType ={
+type ProductPropsType = {
     title: string
-    image:string
+    image: string
     price: number
-    buyClick:()=>void
+    id: string
 }
 
 
+const Product = ({title, image, price, id}: ProductPropsType) => {
+    const dispatch = useDispatch();
+    const product = {title, image, price, id,amount:1}
 
-const Product = ({title,image,price,buyClick}:ProductPropsType) => {
+    const onAddProductClick = (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault();
+        dispatch(addBasketItem({product}))
+    }
+
+
     return (
         <div className={s.wrapper}>
             <img className={s.image} src={image} alt=""/>
@@ -20,7 +30,7 @@ const Product = ({title,image,price,buyClick}:ProductPropsType) => {
                 {price}
             </div>
             <div className={s.buttonWrapper}>
-                <div onClick={buyClick} className={s.button}>
+                <div onClick={onAddProductClick} className={s.button}>
                     Buy
                 </div>
             </div>
