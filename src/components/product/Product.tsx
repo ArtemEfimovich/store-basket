@@ -1,7 +1,8 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import s from './Product.module.scss'
 import {addBasketItem} from "../../bll/reducers/basketReducer";
+import {AppRootStateType} from "../../bll/store/store";
 
 
 type ProductPropsType = {
@@ -9,12 +10,14 @@ type ProductPropsType = {
     image: string
     price: number
     id: string
+
 }
 
 
 const Product = ({title, image, price, id}: ProductPropsType) => {
     const dispatch = useDispatch();
-    const product = {title, image, price, id,amount:1}
+    const product = {title, image, price, id}
+
 
     const onAddProductClick = (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();

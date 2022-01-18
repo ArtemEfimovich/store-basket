@@ -10,7 +10,6 @@ import {calsTotalCount} from "../../utils/utils";
 const Basket = () => {
     const products = useSelector<AppRootStateType, ProductsBasketType[]>(state => state.basket.productInBasket)
     const totalCount = calsTotalCount(products)
-    console.log(products)
 
     return (
     <>
@@ -18,10 +17,17 @@ const Basket = () => {
             products.length > 0 ?
                 <div className={s.container}>
                     <div>
-                        {products && products.map(({image, price,title, id,amount}) => {
-                            return <BasketItem key={id} image={image} title={title} amount={amount} price={price} id={id}/>
+                        {products && products.map(({image, price,title, id,basketPrice,amount}) => {
+                            return <BasketItem
+                                key={id}
+                                image={image}
+                                title={title}
+                                amount={amount}
+                                price={price}
+                                basketPrice={basketPrice}
+                                id={id}/>
                         })}
-                        <div>Total: {totalCount}</div>
+                        <div>Total: {totalCount} $</div>
                     </div>
                     <FormControl sx={{border: '1px solid grey', borderRadius: '8px'}} className={s.formWrapper}>
                         <Input placeholder='Name'/>

@@ -1,8 +1,9 @@
 import React from 'react';
 import s from './BasketItem.module.scss'
 import {Button} from "@mui/material";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addBasketItem, deleteBasketItem} from "../../../bll/reducers/basketReducer";
+import {AppRootStateType} from "../../../bll/store/store";
 
 
 type BasketItemType = {
@@ -11,16 +12,17 @@ type BasketItemType = {
     amount: number
     id:string
     price: number
+
 }
 
 
 const BasketItem = ({image, title,amount,id,price}: BasketItemType) => {
    const dispatch = useDispatch()
-
-    const product = {image, title,amount,id,price}
+    const basketPrice= useSelector<AppRootStateType,number>(state => state.basket.basketPrice)
+    const product = {image, title,amount,id,price,basketPrice}
 
     const onDeleteItem = () =>{
-       dispatch(deleteBasketItem({id}))
+       dispatch(deleteBasketItem({product}))
     }
 
     const setBasketItem = ()=>{

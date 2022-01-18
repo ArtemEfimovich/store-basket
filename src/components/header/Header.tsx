@@ -41,7 +41,7 @@ export default function Header() {
                         Store
                     </Typography>
                     <Box sx={{flexGrow: 1}}/>
-                    <div>{totalPrice ? totalPrice : null}</div>
+                    {totalPrice ?<div> {totalPrice} $</div> : null}
                     <Box sx={{display: {xs: 'none', md: 'flex'}}}>
                         <IconButton onClick={onBasketNavigateClick} size="large" aria-label="show 4 new mails"
                                     color="inherit">
