@@ -17,14 +17,13 @@ const Basket = () => {
             products.length > 0 ?
                 <div className={s.container}>
                     <div>
-                        {products && products.map(({image, price,title, id,basketPrice,amount}) => {
+                        {products && products.map(({image, price,title, id,amount}) => {
                             return <BasketItem
                                 key={id}
                                 image={image}
                                 title={title}
                                 amount={amount}
                                 price={price}
-                                basketPrice={basketPrice}
                                 id={id}/>
                         })}
                         <div>Total: {totalCount} $</div>

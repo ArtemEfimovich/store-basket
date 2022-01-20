@@ -2,8 +2,8 @@ import React from 'react';
 import Product from '../product/Product';
 import s from './Home.module.scss'
 import {AppRootStateType} from "../../bll/store/store";
-import {useDispatch, useSelector} from "react-redux";
-import {addBasketItem, ProductsType} from "../../bll/reducers/basketReducer";
+import {useSelector} from "react-redux";
+import {ProductsType} from "../../bll/reducers/basketReducer";
 
 
 const Home = () => {
@@ -13,12 +13,13 @@ const Home = () => {
     return (
         <div className={s.container}>
             <div className={s.wrapper}>
-                {products.map(({title,price,image,id})=>{
+                {products.map(({title,price,image,id,amount})=>{
                     return <Product  key={id}
                                      image={image}
                                      title={title}
                                      price={price}
                                      id={id}
+                                     amount={amount}
                     />
                 })}
             </div>

@@ -7,6 +7,7 @@ export type ProductsType = {
     title: string
     price: number
     image: string
+    amount:number
 }
 
 export type ProductsBasketType={
@@ -15,7 +16,6 @@ export type ProductsBasketType={
     price: number
     image: string
     amount: number
-    basketPrice: number
 }
 
 
@@ -32,36 +32,42 @@ const initialState: initialStateType = {
             title: 'Apple Iphone 10 Purple',
             price: 5,
             image: 'https://di-smart.by/wp-content/uploads/2021/04/iphone-12-purple-select-2021.png',
+            amount:0
         },
         {
             id: uid(),
             title: 'Apple Iphone 11 Purple',
             price: 4,
             image: 'https://di-smart.by/wp-content/uploads/2021/04/iphone-12-purple-select-2021.png',
+            amount:0
         },
         {
             id: uid(),
             title: 'Apple Iphone 12 Purple',
             price: 3,
             image: 'https://di-smart.by/wp-content/uploads/2021/04/iphone-12-purple-select-2021.png',
+            amount:0
         },
         {
             id: uid(),
             title: 'Apple Iphone 13 Purple',
             price: 2,
             image: 'https://di-smart.by/wp-content/uploads/2021/04/iphone-12-purple-select-2021.png',
+            amount:0
         },
         {
             id: uid(),
             title: 'Apple Iphone 14 Purple',
             price:6,
             image: 'https://di-smart.by/wp-content/uploads/2021/04/iphone-12-purple-select-2021.png',
+            amount:0
         },
         {
             id: uid(),
             title: 'Apple Iphone 15 Purple',
             price: 7,
             image: 'https://di-smart.by/wp-content/uploads/2021/04/iphone-12-purple-select-2021.png',
+            amount:0
         },
 
     ],
@@ -78,7 +84,7 @@ export const slice = createSlice({
             if(isProductInCart >= 0){
                 const newAmount = state.productInBasket[isProductInCart].amount + 1
                 state.productInBasket[isProductInCart].amount= newAmount
-                state.productInBasket[isProductInCart].basketPrice =  state.productInBasket[isProductInCart].price * newAmount
+                state.productInBasket[isProductInCart].price =  state.productInBasket[isProductInCart].price * newAmount
             }else{
                 state.productInBasket.push(action.payload.product)
             }
@@ -89,7 +95,7 @@ export const slice = createSlice({
             if(state.productInBasket[isProductInCart].amount > 1 ){
                 const newAmount = state.productInBasket[isProductInCart].amount - 1
                 state.productInBasket[isProductInCart].amount = newAmount
-                state.productInBasket[isProductInCart].basketPrice = state.productInBasket[isProductInCart].price * newAmount
+                state.productInBasket[isProductInCart].price = state.productInBasket[isProductInCart].price * newAmount
             }else{
                 state.productInBasket = state.productInBasket.filter(item => item.id !== action.payload.product.id)
             }
