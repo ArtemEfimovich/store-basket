@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Product from '../product/Product';
 import s from './Home.module.scss'
 import {AppRootStateType} from "../../bll/store/store";
@@ -10,6 +10,8 @@ const Home = () => {
     const products = useSelector<AppRootStateType,ProductsType[]>(state => state.basket.products)
 
 
+
+    console.log('render')
     return (
         <div className={s.container}>
             <div className={s.wrapper}>
